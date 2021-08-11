@@ -104,9 +104,9 @@ if __name__ == '__main__':
         b1 = int(input('base of the value given : '))
         b2 = int(input('base2 be converted to:'))
 
-        # print('\nnum : ', end=""); n1 = str(In.readline())[:-1]         # type of variable
-        # print('base1 : ', end=""); b1 = int(In.readline())
-        # print("base2 : ", end=""); b2 = int(In.readline())              # type to be converted
+        # print('\nnum : ', end=""); n1 = str(In.readline())[:-1]
+        # print('base1 : ', end=""); b1 = int(In.readline())              # base of number
+        # print("base2 : ", end=""); b2 = int(In.readline())              # base to be converted
 
         if '.' not in n1:
             n1+='.0'
