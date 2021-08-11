@@ -1,7 +1,7 @@
 # Any-to-Any-Base-Converter
 Convert numbers from and to anywhere between 2,3,4,...,35
 
-![higher to lower conversion](resource/high2lowconversion.png)
+![higher to lower conversion](resource/high2lowConv.png)
 
 ![lower to higher conversion](resource/low2highConversion.png)
 
