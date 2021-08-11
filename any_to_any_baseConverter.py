@@ -1,7 +1,7 @@
-from sys import stdin as In
+# from sys import stdin as In
 
+all_num = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-# decimal converter
 def decitoany(n1, val):
     box = []
     b = 0;
@@ -30,7 +30,8 @@ def decitoany(n1, val):
             box.append(b)
             if f1 >= 1:
                 f1 %= 1
-    print("(", "".join(str(i) for i in box), ")b{}".format(val))
+    return box,val
+    
 
 
 def anytodeci(n1, val):
@@ -59,14 +60,15 @@ def anytodeci(n1, val):
                     n = n - 65
                 n += 10
                 num = n
-            # print(num)
+            # print('_num:',num)
             box += int(num) / (val ** i)
-        return box
 
+        # print('_box:', box)
+        return box
     else:
         from math import log10
         i = int(log10(n1))
-        # print(i)
+        # print('i=',i)
         box = 0
         while i >= 0:
             num = n1 / (10 ** i)
@@ -86,34 +88,49 @@ def anytodeci(n1, val):
                 j += 1
         return box
 
+def isbase(number,x):
+    x_base = set(all_num[:x])
+    for i in number:
+        if i not in x_base and i!='.':
+            return False
+    return True
+
 
 if __name__ == '__main__':
     # n1=5637.5340;b1=8;b2=16    #initial decimal number and base
     i = 0
     while i == 0:
-        print('\nnum : ', end="")
-        n1 = str(In.readline())  # type of variable
+        n1 = input('\nnum : ')
+        b1 = int(input('base of the value given : '))
+        b2 = int(input('base2 be converted to:'))
 
-        print('base of the value given : ', end="")
-        b1 = int(In.readline())
+        # print('\nnum : ', end=""); n1 = str(In.readline())[:-1]         # type of variable
+        # print('base1 : ', end=""); b1 = int(In.readline())
+        # print("base2 : ", end=""); b2 = int(In.readline())              # type to be converted
 
-        # type to be converted
-        print("base2 : ", end="")
-        b2 = int(In.readline())
+        if '.' not in n1:
+            n1+='.0'
+
+        if not isbase(n1,b1) :
+            print("\n number",n1,"does not belong to base",b1," format :( ")
+            continue
+
         if b1 <= 10:
             n1 = float(n1)
 
+
         # breakpoint()
         if b1 == 10:
-            print("box number for \n({})b{} -->".format(n1, 10), end=" ")
             decitoany(n1, b2)
+            print(" \n({})b{} -->".format(n1, 10), end=" ")
+            print("(", "".join(str(i) for i in b), ")b{}".format(v))
         elif b2 == 10:
-            print("box number for \n({})b{} -->".format(n1, b1), end=" ")
             box = anytodeci(n1, b1)
+            print(" \n({})b{} -->".format(n1, b1), end=" ")
             print("(", "".join(str(box)), ")b{}".format(10))
-
         else:
-            print("box number for \n({})b{} -->".format(n1, b1), end=" ")
             box = anytodeci(n1, b1)
+            b,v=decitoany(box, b2)
+            print(" \n({})b{} -->".format(n1, b1), end=" ")
             print("(", "".join(str(box)), ")b{}".format(10), "-->", end=" ")
-            decitoany(box, b2)
+            print("(", "".join(str(i) for i in b), ")b{}".format(v))
