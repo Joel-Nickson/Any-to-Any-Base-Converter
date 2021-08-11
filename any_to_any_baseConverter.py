@@ -105,7 +105,7 @@ if __name__ == '__main__':
         b2 = int(input('base2 be converted to:'))
 
         # print('\nnum : ', end=""); n1 = str(In.readline())[:-1]
-        # print('base1 : ', end=""); b1 = int(In.readline())              # base of number
+        # print('base1 : ', end=""); b1 = int(In.readline())              # base of variable
         # print("base2 : ", end=""); b2 = int(In.readline())              # base to be converted
 
         if '.' not in n1:
@@ -121,7 +121,7 @@ if __name__ == '__main__':
 
         # breakpoint()
         if b1 == 10:
-            decitoany(n1, b2)
+            b,v=decitoany(n1, b2)
             print(" \n({})b{} -->".format(n1, 10), end=" ")
             print("(", "".join(str(i) for i in b), ")b{}".format(v))
         elif b2 == 10:
